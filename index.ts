@@ -38,3 +38,10 @@ let point: { x: number, y: number } = {
     x: 10,
     y: -35
 }
+
+// function literals
+
+const logNumber: (i: number) => void = (i: number) => {
+    if (i <= 0) console.error('i should be bigger than zero!')
+    for (let k = 0; i > k; k++) console.log(k);
+}
