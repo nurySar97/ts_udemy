@@ -1,0 +1,16 @@
+{
+  "name": "ts-udemy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nurySar97/ts_udemy.git",
+  "author": "<nsaryyev9797@gmail.com>",
+  "scripts": {
+    "ts-compile": "tsc index.ts",
+    "node-run": "node index.js",
+    "start": "run-s ts-compile node-run"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
