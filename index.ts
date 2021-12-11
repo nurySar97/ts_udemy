@@ -7,14 +7,18 @@ interface ITodoItem {
     completed: boolean
 }
 
-axios.get(url).then(response => {
-    const data = response.data as ITodoItem;
-
-    const { id, title, completed } = data;
-
+const logTodo = (id: number, title: string, completed: boolean) => {
     console.log(`
     This is todo item's id: ${id}
     This is todo item's title: ${title}
     Is completed? ${completed ? 'Yes' : 'No'}.
     `)
+}
+
+axios.get(url).then(response => {
+    const data = response.data as ITodoItem;
+
+    const { id, title, completed } = data;
+    logTodo(id, title, completed)
 })
+
