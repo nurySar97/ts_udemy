@@ -1,3 +1,13 @@
-const str: string = 'Hello from index file!';
+const today = new Date();
+today.getMonth();
 
-console.log(str)
+const person = {
+    age: 21
+}
+
+class Color {
+
+}
+
+const red = new Color();
+ 
