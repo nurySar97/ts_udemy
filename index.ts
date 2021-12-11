@@ -1,13 +1,17 @@
-const today = new Date();
-today.getMonth();
+// number
+let orangesCount: number = 5;
 
-const person = {
-    age: 21
-}
+// string
+let speedType: string = 'fast';
 
-class Color {
+// boolean
+let hasDog: boolean = null;
 
-}
+// null
+const nothing: null = null;
 
-const red = new Color();
- 
+// undefined
+const never: undefined = undefined;
+
+// built-in objects
+const today: Date = new Date()
