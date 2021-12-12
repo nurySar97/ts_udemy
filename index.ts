@@ -1,74 +1,79 @@
-// number
-let orangesCount: number = 5;
-
-// string
-let speedType: string = 'fast';
-
-// boolean
-let hasDog: boolean = null;
-
-// null
-const nothing: null = null;
-
-// undefined
-const never: undefined = undefined;
-
-// built-in objects
-const today: Date = new Date()
-
-// array
-let colors: string[] = ['red', 'green', 'blue'];
-let numbers: number[] = [1, 2, 3, 4, 5];
-let results: boolean[] = [true, true, false];
-
-// classes
-class Car {
-    name: string = 'Toyota';
-    model: string = 'Avalon';
-
-    get fullName(): string {
-        return this.name + ' ' + this.model
-    }
+// Function Declaration
+function calculate(x: number, y: number, calc: (x: number, y: number) => number): number {
+    return calc(x, y)
 }
 
-let car: Car = new Car();
-
-// object literal
-let point: { x: number, y: number } = {
-    x: 10,
-    y: -35
+function divide(a: number, b: number): number {
+    return a / b
 }
 
-// function literals
+// Function Expression
+const multiply = function (a: number, b: number): number {
+    return a * b
+}
+// Arrow functions
+const add = (x: number, y: number): number => {
+    return x + y
+};
 
-const logNumber: (i: number) => void = (i: number) => {
-    if (i <= 0) console.error('i should be bigger than zero!')
-    for (let k = 0; i > k; k++) console.log(k);
+const subtract = (x: number, y: number): number => {
+    return x - y
+};
+
+// Void & Never
+
+// Function returns void
+const logger = (message: string): void => {
+    console.log(message)
 }
 
-//  any literal
-// 1) Function returns any type - JSON.parse retuns type any
-const json = `{"x":10, "y":20}`;
-const coords: { x: number, y: number } = JSON.parse(json);
-
-console.log(coords);
-
-// 2) When we declare a variable on one line and initialize it later
-let words = ['one', 'two', 'tree'];
-let isTwo = false;
-
-for (let i of words) {
-    if (i === 'two') {
-        isTwo = true
-    }
+// Function never
+const throwError = (message: string): never => {
+    throw new Error(message)
 }
-console.log(isTwo);
-// 3) Variables whoes type  can not be inferred
-let myNumbers = [-10, -1, 12];
-let positiveNumber: number | boolean;
 
-for (let i of myNumbers) {
-    if (i > 0) {
-        positiveNumber = i
-    }
+const counter = (i: number = 0): never => {
+    while (true) console.log(++i);
 }
+
+// Destructuring
+const todayWeater = {
+    date: new Date(),
+    weather: 'summy'
+}
+
+const logWeather1 = (forecast: { date: Date, weather: string }): void => {
+    console.log(`
+    Date: ${forecast.date.toLocaleDateString()}
+    Weather: ${forecast.weather}
+    `)
+}
+logWeather1(todayWeater)
+
+// ES2015
+const logWeathe2 = ({ date, weather }: { date: Date, weather: string }): void => {
+    console.log(`
+    Date: ${date.toLocaleDateString()}
+    Weather: ${weather}
+    `)
+}
+
+logWeathe2(todayWeater)
+
+// Annotation for objects
+const profile = {
+    name: 'Tom',
+    surname: 'Hanks',
+    age: 56,
+    coords: {
+        lat: 1,
+        lng: 30
+    },
+    setAge(age: number): void {
+        this.age = age
+    },
+}
+
+const { age }: { age: number } = profile;
+
+const { coords: { lat, lng } }: { coords: { lat: number, lng: number } } = profile
