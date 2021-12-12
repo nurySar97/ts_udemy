@@ -1,25 +1,40 @@
-const drink = {
-    color: 'brown',
-    carbonate: true,
-    sugar: 40
+interface Int_Vehicle {
+    name: string;
+    year: number;
+    isBroken: boolean;
+    date?: string;
+    status?: string;
+    printSummary(): void;
 }
 
-type Drink = [string, boolean, number];
-
-const late: Drink = ['brown', false, 25];
-const sprite: Drink = ['clear', true, 30];
-const americano: Drink = ['black', false, 0];
-
-
-const carSpecs: [number, number] = [400, 3354];
-
-const carSpecedObj: {
-    horsepower: number,
-    weight: number
-} = {
-    horsepower: 400,
-    weight: 3354
+interface Int_Reportable {
+    summary(): string
 }
 
-let math: [string, ...number[]] = ["Math", 5, 4, 5, 4, 4];
-let physics: [string, ...number[]] = ["Physics", 5, 5, 5];
+const printSummary = (item: Int_Reportable): void => {
+    console.log(item.summary())
+}
+
+const oldCivic: (Int_Vehicle & Int_Reportable) = {
+    name: 'Civic',
+    year: 2000,
+    isBroken: true,
+    date: new Date().toLocaleDateString(),
+    status: 'Let\'s Not Run Out of Steam Just Yet',
+    printSummary() {
+        const _self = this as (Int_Vehicle & Int_Reportable);
+
+        for (let i in _self) {
+            const value = _self[i as keyof Int_Vehicle];
+            if (typeof value !== 'function') {
+                console.log(`${i}: ${value}`)
+            }
+        }
+    },
+    summary() {
+        return `${this.name}'s status: ${this.status}`
+    }
+}
+
+oldCivic.printSummary();
+printSummary(oldCivic);
