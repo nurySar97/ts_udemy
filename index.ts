@@ -1,35 +1,25 @@
-// array with string
-const colors: string[] = ['red', 'green', 'blue'];
+const drink = {
+    color: 'brown',
+    carbonate: true,
+    sugar: 40
+}
 
-// array with dates
-const dates: Date[] = [new Date(), new Date()];
+type Drink = [string, boolean, number];
 
-// array with array
-const fruitsByColor1 = [
-    ['tomato'],
-    ['apple'],
-    ['lemon']
-]
+const late: Drink = ['brown', false, 25];
+const sprite: Drink = ['clear', true, 30];
+const americano: Drink = ['black', false, 0];
 
-const fruitsByColor2: string[][] = [
-    ['tomato'],
-    ['apple'],
-    ['lemon']
-]
 
-// Help with inference when extracting values
-const color = colors[0];
-const color1 = colors.pop();
+const carSpecs: [number, number] = [400, 3354];
 
-// Prevent incompatible values
-// colors.push(true);
+const carSpecedObj: {
+    horsepower: number,
+    weight: number
+} = {
+    horsepower: 400,
+    weight: 3354
+}
 
-// Help with 'map'
-const resultColorsToUppercase = colors.map((color: string): string => {
-    return color.toUpperCase()
-})
-
-// Array with flexible types
-const importantDates: (Date | string)[] = [new Date()];
-
-importantDates.push('2021-11-11')
+let math: [string, ...number[]] = ["Math", 5, 4, 5, 4, 4];
+let physics: [string, ...number[]] = ["Physics", 5, 5, 5];
