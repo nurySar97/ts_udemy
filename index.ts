@@ -1,40 +1,29 @@
-interface Int_Vehicle {
-    name: string;
-    year: number;
-    isBroken: boolean;
-    date?: string;
-    status?: string;
-    printSummary(): void;
-}
+class Vehicle {
+    name: string
+    constructor(name: string) {
+        this.name = name
+    }
 
-interface Int_Reportable {
-    summary(): string
-}
+    drive(): void {
+        console.log(`${this.name} is driving!`)
+    }
 
-const printSummary = (item: Int_Reportable): void => {
-    console.log(item.summary())
-}
-
-const oldCivic: (Int_Vehicle & Int_Reportable) = {
-    name: 'Civic',
-    year: 2000,
-    isBroken: true,
-    date: new Date().toLocaleDateString(),
-    status: 'Let\'s Not Run Out of Steam Just Yet',
-    printSummary() {
-        const _self = this as (Int_Vehicle & Int_Reportable);
-
-        for (let i in _self) {
-            const value = _self[i as keyof Int_Vehicle];
-            if (typeof value !== 'function') {
-                console.log(`${i}: ${value}`)
-            }
-        }
-    },
-    summary() {
-        return `${this.name}'s status: ${this.status}`
+    stop(): void {
+        console.log(`${this.name} has stopped!`)
     }
 }
 
-oldCivic.printSummary();
-printSummary(oldCivic);
+class Car extends Vehicle {
+    drive(): void {
+        console.log(`I\'m ${this.name}. I\'m driving!`)
+    }
+}
+
+const vehicle = new Vehicle('vehicle');
+
+vehicle.drive();
+vehicle.stop();
+
+const car = new Car('car');
+car.drive();
+car.stop();
