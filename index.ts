@@ -1,40 +1,54 @@
-interface Int_Vehicle {
-    name: string;
-    year: number;
-    isBroken: boolean;
-    date?: string;
-    status?: string;
-    printSummary(): void;
-}
+class Vehicle {
+    // color: string = '#ff0000';
 
-interface Int_Reportable {
-    summary(): string
-}
+    // constructor(name: string, color?: string) {
+    //     this.name = name;
+    //     this.color = color;
+    // }
 
-const printSummary = (item: Int_Reportable): void => {
-    console.log(item.summary())
-}
+    constructor(public name: string, public color?: string) { }
 
-const oldCivic: (Int_Vehicle & Int_Reportable) = {
-    name: 'Civic',
-    year: 2000,
-    isBroken: true,
-    date: new Date().toLocaleDateString(),
-    status: 'Let\'s Not Run Out of Steam Just Yet',
-    printSummary() {
-        const _self = this as (Int_Vehicle & Int_Reportable);
+    public stop(): void {
+        console.log(`${this.name} has stopped!`)
+    }
 
-        for (let i in _self) {
-            const value = _self[i as keyof Int_Vehicle];
-            if (typeof value !== 'function') {
-                console.log(`${i}: ${value}`)
-            }
-        }
-    },
-    summary() {
-        return `${this.name}'s status: ${this.status}`
+    // public drive(): void {
+    //     console.log(`${this.name} is driving!`)
+    // }
+
+    protected beep(): void {
+        console.log('Beeep!')
+    }
+
+    showColor(): void {
+        console.log(this.name + ': ' + this.color)
     }
 }
 
-oldCivic.printSummary();
-printSummary(oldCivic);
+class Car extends Vehicle {
+
+    constructor(public name: string, public color?: string, public wheels?: number) {
+        super(name, color);
+    }
+
+    private drive(): void {
+        console.log(`I\'m ${this.name}. I\'m driving!`)
+    }
+
+    startDrivingProcess(): void {
+        this.drive()
+        this.beep()
+    }
+}
+
+// vehicle
+const vehicle = new Vehicle('Vehicle', '#ff0000');
+vehicle.showColor()
+vehicle.stop();
+
+// car
+const car = new Car('Car', '#00ff00', 4);
+
+car.startDrivingProcess();
+car.stop();
+car.showColor();
