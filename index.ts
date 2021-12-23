@@ -1,29 +1,54 @@
 class Vehicle {
-    name: string
-    constructor(name: string) {
-        this.name = name
-    }
+    // color: string = '#ff0000';
 
-    drive(): void {
-        console.log(`${this.name} is driving!`)
-    }
+    // constructor(name: string, color?: string) {
+    //     this.name = name;
+    //     this.color = color;
+    // }
 
-    stop(): void {
+    constructor(public name: string, public color?: string) { }
+
+    public stop(): void {
         console.log(`${this.name} has stopped!`)
+    }
+
+    // public drive(): void {
+    //     console.log(`${this.name} is driving!`)
+    // }
+
+    protected beep(): void {
+        console.log('Beeep!')
+    }
+
+    showColor(): void {
+        console.log(this.name + ': ' + this.color)
     }
 }
 
 class Car extends Vehicle {
-    drive(): void {
+
+    constructor(public name: string, public color?: string, public wheels?: number) {
+        super(name, color);
+    }
+
+    private drive(): void {
         console.log(`I\'m ${this.name}. I\'m driving!`)
+    }
+
+    startDrivingProcess(): void {
+        this.drive()
+        this.beep()
     }
 }
 
-const vehicle = new Vehicle('vehicle');
-
-vehicle.drive();
+// vehicle
+const vehicle = new Vehicle('Vehicle', '#ff0000');
+vehicle.showColor()
 vehicle.stop();
 
-const car = new Car('car');
-car.drive();
+// car
+const car = new Car('Car', '#00ff00', 4);
+
+car.startDrivingProcess();
 car.stop();
+car.showColor();
