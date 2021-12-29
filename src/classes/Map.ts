@@ -1,8 +1,8 @@
 import { User, Company } from '.';
-import { getCoords } from '../utils';
 
 class Map {
     private static isInitialized: boolean = false;
+    private maps: typeof google.maps = google.maps;
     private googleMap: google.maps.Map;
 
     constructor(id: string) {
@@ -20,18 +20,11 @@ class Map {
         }
     }
 
-    addUserMarker(user: User): void {
-        new google.maps.Marker({
+    addMarker(mappable: User | Company){
+        new this.maps.Marker({
             map: this.googleMap,
-            position: user.location
-        })
-    };
-
-    addCompanyMarker(company: Company): void {
-        new google.maps.Marker({
-            map: this.googleMap,
-            position: company.location
-        })
+            position: mappable.location
+        })   
     }
 }
 
