@@ -1,9 +1,10 @@
 import './style.css';
+import { Map } from './classes';
+import { User, Company } from './classes';
 
-new google.maps.Map(document.getElementById('map'), {
-    zoom: 1,
-    center: {
-        lat: 0,
-        lng: 0
-    }
-})
+const user = new User('green');
+const company = new Company('blue');
+const customMap = new Map('map');
+
+customMap.addMarker(user);
+customMap.addMarker(company);
