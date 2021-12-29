@@ -5,10 +5,10 @@
   "repository": "https://github.com/nurySar97/ts_udemy.git",
   "author": "<nsaryyev9797@gmail.com>",
   "scripts": {
-    "ts-compile": "tsc index.ts",
-    "node-run": "node index.js",
+    "ts-compile": "tsc ./src/index.ts --outdir ./build",
+    "node-run": "node ./build/index.js",
     "start": "run-s ts-compile node-run",
-    "dev": "parcel index.html"
+    "dev": "parcel ./src/index.html"
   },
   "license": "MIT",
   "devDependencies": {
@@ -16,6 +16,8 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
+    "@types/faker": "^5.5.9",
+    "faker": "^5.5.3",
     "parcel-bundler": "^1.12.5"
   }
 }
