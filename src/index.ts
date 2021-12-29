@@ -1,9 +1,8 @@
 import './style.css';
+import { Map } from './classes';
+import { User } from './classes';
 
-new google.maps.Map(document.getElementById('map'), {
-    zoom: 1,
-    center: {
-        lat: 0,
-        lng: 0
-    }
-})
+const user = new User();
+const customMap = new Map('map');
+
+customMap.addUserMarker(user);
