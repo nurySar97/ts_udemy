@@ -1,5 +1,9 @@
-import User from './classes/User'
+import './style.css';
 
-const user = new User();
-
-console.log(user)
+new google.maps.Map(document.getElementById('map'), {
+    zoom: 1,
+    center: {
+        lat: 0,
+        lng: 0
+    }
+})
