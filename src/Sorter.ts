@@ -1,7 +1,7 @@
-import { NumbersCollection } from './NumbersCollection'
+import { ISortable } from './interfaces';
 
 export class Sorter {
-    constructor(public collection: NumbersCollection) { }
+    constructor(public collection: ISortable) { }
 
     sort(): void {
         const { length } = this.collection;

@@ -1,4 +1,6 @@
-export class NumbersCollection {
+import { ISortable } from "./interfaces";
+
+export class NumbersCollection implements ISortable {
     constructor(public data: number[]) { }
 
     length: number = this.data.length
