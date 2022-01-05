@@ -1,7 +1,10 @@
 import { ISortable } from "./interfaces";
+import { Sorter } from "./Sorter";
 
-export class CharactersCollection implements ISortable {
-    constructor(public data: string) { }
+export class CharactersCollection extends Sorter implements ISortable {
+    constructor(public data: string) { 
+        super()
+    }
 
     length: number = this.data.length;
 

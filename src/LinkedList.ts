@@ -1,4 +1,5 @@
 import { ISortable } from "./interfaces";
+import { Sorter } from "./Sorter";
 
 class LLNode {
     next: LLNode | null = null;
@@ -7,7 +8,7 @@ class LLNode {
 
 }
 
-export class LinkedList implements ISortable {
+export class LinkedList extends Sorter implements ISortable {
     head: LLNode | null = null;
     length: number = this.getLength();
 
@@ -81,17 +82,17 @@ export class LinkedList implements ISortable {
         return leftNode.data > rightNode.data
     }
 
-    swap(leftIndex: number, rightIndex: number): void {
+    swap(leftIndex: number, rightIndex: number): void {        
         const leftNode = this.at(leftIndex);
         const rightNode = this.at(rightIndex);
 
         if (!rightNode) throw new Error('In swap method, cannot find right item!');
         if (!leftNode) throw new Error('In swap method, cannot find left item!');
 
-        const leftHand = leftNode.data;
+        const leftNodeData = leftNode.data;
 
         leftNode.data = rightNode.data;
-        rightNode.data = leftHand;
+        rightNode.data = leftNodeData
     }
 
     print(): void {
