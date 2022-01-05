@@ -1,9 +1,12 @@
-import { bubble_sort, Sorter } from './bubble_sort';
+import { NumbersCollection } from './NumbersCollection';
+import { Sorter } from './Sorter';
 
-console.log(bubble_sort([5, 1, 2, 4, 6, 1]));
+const numbersCollection = new NumbersCollection([10, -2, 13, 4, 2]);
 
-const sorter = new Sorter([1, 3, 4, 2, 7, 2]);
+const sorter = new Sorter(numbersCollection);
 
-console.log('random collection: ', sorter);
+console.log('unsorted numbersCollection: ', numbersCollection);
+
 sorter.sort();
-console.log('sorted collection: ', sorter);
+
+console.log('sorted numbersCollection: ', numbersCollection);
