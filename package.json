@@ -5,9 +5,9 @@
   "repository": "https://github.com/nurySar97/ts_udemy.git",
   "author": "<nsaryyev9797@gmail.com>",
   "scripts": {
-    "start:build": "tsc ./src/index.ts --outdir ./build -w",
-    "start:run": "nodemon ./build/index.js",
-    "start": "run-p start:*"
+    "start:build": "tsc ./src/index.ts --outdir ./build",
+    "start:run": "node ./build/index.js",
+    "start": "run-s start:*"
   },
   "license": "MIT",
   "devDependencies": {
