@@ -1,4 +1,5 @@
 import { CharactersCollection } from './CharactersCollection';
+import { LinkedList } from './LinkedList';
 import { NumbersCollection } from './NumbersCollection';
 import { Sorter } from './Sorter';
 
@@ -15,3 +16,10 @@ const characterNumbar = new Sorter(charactersCollection);
 console.log('unsorted characterNumbar: ', characterNumbar);
 characterNumbar.sort();
 console.log('sorted characterNumbar: ', characterNumbar);
+
+// Linked list
+const linkedList = new LinkedList();
+linkedList.add(1).add(2).add(-1);
+const sortedLinkedList = new Sorter(linkedList);
+// sortedLinkedList.sort();
+console.log('linkedList: ', JSON.stringify(linkedList, null, 3));
